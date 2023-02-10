@@ -218,35 +218,36 @@
                                         <form method="POST" action="{{ url('/details/' . ($id = $product->id)) }}"
                                             enctype="multipart/form-data">
                                             @csrf
-                                            <h4 class="mb-4">Leave a review</h4>
-                                            <small>Your email address will not be published. Required fields are marked
-                                                *</small>
-                                            <div class="d-flex my-3">
-                                                <p class="mb-0 mr-2">Your Rating * :</p>
-                                                <div id="rateYo">
-
+                                            @if ($message = Session::get('done'))
+                                                <div class="alert alert-success alert-block">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <strong>{{ $message }}</strong>
                                                 </div>
-                                                {{-- <div class="text-primary">
+                                            @else
+                                                <h4 class="mb-4">Leave a review</h4>
+                                                <small>Your email address will not be published. Required fields are marked
+                                                    *</small>
+                                                <div class="d-flex my-3">
+                                                    <p class="mb-0 mr-2">Your Rating * :</p>
+                                                    <div id="rateYo">
+
+                                                    </div>
+                                                    {{-- <div class="text-primary">
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </div> --}}
-                                            </div>
+                                                </div>
 
-                                            <div class="form-group">
-                                                @if ($message = Session::get('done'))
-                                                    <div class="alert alert-success alert-block">
-                                                        <button type="button" class="close"
-                                                            data-dismiss="alert">×</button>
-                                                        <strong>{{ $message }}</strong>
-                                                    </div>
-                                                @endif
-                                                <label for="message">Your Review *</label>
-                                                <textarea name="review" id="message" cols="30" rows="5" class="form-control"></textarea>
-                                            </div>
-                                            {{-- <div class="form-group">
+                                                <div class="form-group">
+
+
+                                                    <label for="message">Your Review *</label>
+                                                    <textarea name="review" id="message" cols="30" rows="5" class="form-control"></textarea>
+                                                </div>
+                                                {{-- <div class="form-group">
                                                     <label for="name">Your Name *</label>
                                                     <input type="text" class="form-control" id="name">
                                                 </div>
@@ -254,11 +255,12 @@
                                                     <label for="email">Your Email *</label>
                                                     <input type="email" class="form-control" id="email">
                                                 </div> --}}
-                                            <div class="form-group mb-0">
-                                                <input type="submit" value="Leave Your Review"
-                                                    class="btn btn-primary px-3">
-                                            </div>
+                                                <div class="form-group mb-0">
+                                                    <input type="submit" value="Leave Your Review"
+                                                        class="btn btn-primary px-3">
+                                                </div>
                                         </form>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
