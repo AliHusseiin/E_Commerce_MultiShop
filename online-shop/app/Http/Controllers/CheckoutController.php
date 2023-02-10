@@ -55,7 +55,7 @@ function index()
 
     
     $order_number = $order['id'] . '45f' . $order['id'] . 'rts';
-    return Redirect()->back()->with('success', 'Thank you for you Order, Order Number:'. $order_number);
+    return Redirect()->back()->with('success', 'Thank you for your Order, Order Number:'. $order_number);
 
     }
     

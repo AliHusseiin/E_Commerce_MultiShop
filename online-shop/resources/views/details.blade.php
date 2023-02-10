@@ -215,32 +215,45 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <h4 class="mb-4">Leave a review</h4>
-                                        <small>Your email address will not be published. Required fields are marked
-                                            *</small>
-                                        <div class="d-flex my-3">
-                                            <p class="mb-0 mr-2">Your Rating * :</p>
-                                            <div class="text-primary">
+                                        <form method="POST" action="{{ url('/details/' . ($id = $product->id)) }}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <h4 class="mb-4">Leave a review</h4>
+                                            <small>Your email address will not be published. Required fields are marked
+                                                *</small>
+                                            <div class="d-flex my-3">
+                                                <p class="mb-0 mr-2">Your Rating * :</p>
+                                                <div id="rateYo">
+
+                                                </div>
+                                                {{-- <div class="text-primary">
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
+                                            </div> --}}
                                             </div>
-                                        </div>
-                                        <form>
+
                                             <div class="form-group">
+                                                @if ($message = Session::get('done'))
+                                                    <div class="alert alert-success alert-block">
+                                                        <button type="button" class="close"
+                                                            data-dismiss="alert">×</button>
+                                                        <strong>{{ $message }}</strong>
+                                                    </div>
+                                                @endif
                                                 <label for="message">Your Review *</label>
-                                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                                <textarea name="review" id="message" cols="30" rows="5" class="form-control"></textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="name">Your Name *</label>
-                                                <input type="text" class="form-control" id="name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Your Email *</label>
-                                                <input type="email" class="form-control" id="email">
-                                            </div>
+                                            {{-- <div class="form-group">
+                                                    <label for="name">Your Name *</label>
+                                                    <input type="text" class="form-control" id="name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">Your Email *</label>
+                                                    <input type="email" class="form-control" id="email">
+                                                </div> --}}
                                             <div class="form-group mb-0">
                                                 <input type="submit" value="Leave Your Review"
                                                     class="btn btn-primary px-3">
@@ -285,14 +298,11 @@
                                         href="">${{ $product['name'] }}</a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
                                         <h5>{{ $product->getPriceWithDiscount() }}</h5>
-                                        <h6 class="text-muted ml-2"><del>${{ $product['price'] }} </del></h6>
+                                        <h6 class="text-muted ml-2"><del>${{ $product['price'] }}
+                                            </del></h6>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center mb-1">
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        @include('stars')
                                         <small>(99)</small>
                                     </div>
                                 </div>
@@ -304,4 +314,20 @@
             </div>
         </div>
         <!-- Products End -->
+    @endsection
+    @section('scripts')
+        <script>
+            $(function() {
+
+                $("#rateYo").rateYo({
+                    rating: 1.5,
+                    halfStar: true
+                });
+            });
+            // Getter
+            let normalFill = $("#rateYo").rateYo("option", "halfStar"); //returns true
+
+            // Setter
+            $("#rateYo").rateYo("option", "halfStar", true); //returns a jQuery Element
+        </script>
     @endsection

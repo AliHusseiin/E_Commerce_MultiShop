@@ -124,7 +124,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="orders" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Orders
@@ -133,10 +133,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="users" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Customers
+                                    Users
 
                                 </p>
                             </a>

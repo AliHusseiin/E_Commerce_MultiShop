@@ -7,8 +7,11 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +41,7 @@ Route::get('/dec-product',[CartController::class,'decProduct'] );
 Route::get('/rem-product',[CartController::class,'removeProduct'] );
 Route::put('/{id}', [HomeController::class, 'newsLetter']);
 Route::post('/checkout', [CheckoutController::class, 'placeOrder']);
+Route::post('/details/{id}', [DetailController::class, 'leaveAreview']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -57,6 +61,9 @@ Route::middleware(['auth', 'can:is_admin'])->prefix('admin')->group(function () 
   Route::get('', [AdminController::class, 'index']);
   Route::resource('categories', CategoryController::class);
   Route::resource('products', ProductController::class);
+  Route::resource('orders', OrderController::class);
+  Route::resource('users', UserController::class);
+
 });
 Route::middleware(['auth'])->group(function () {
   Route::get('/checkout',[CheckoutController::class,'index'] );

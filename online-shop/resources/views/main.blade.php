@@ -24,6 +24,8 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ url('css/style.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
 </head>
 
 <body>
@@ -331,6 +333,7 @@
     <!-- Template Javascript -->
     <script src="{{ url('js/main.js') }}"></script>
     <script src="{{ url('js/home.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
     @yield('scripts')
 </body>
