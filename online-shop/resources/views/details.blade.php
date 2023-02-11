@@ -142,7 +142,8 @@
                             <a class="nav-item nav-link text-dark active" data-toggle="tab"
                                 href="#tab-pane-1">Description</a>
                             <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a>
-                            <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+                            <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews
+                                ({{ count($reviews) }})</a>
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="tab-pane-1">
@@ -194,10 +195,8 @@
                             <div class="tab-pane fade" id="tab-pane-3">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        @php
-                                            
-                                        @endphp
-                                        <h4 class="mb-4"> review for
+
+                                        <h4 class="mb-4">{{ count($reviews) }} review for
                                             "{{ $product['name'] }}"</h4>
                                         @foreach ($reviews as $review)
                                             <div class="media mb-4">
