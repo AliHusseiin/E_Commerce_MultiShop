@@ -42,7 +42,7 @@
                             <div class="text-primary mr-2">
                                 @include('stars')
                             </div>
-                            <small class="pt-1">({{ $product['rating_count'] }} Reviews)</small>
+                            <small class="pt-1">({{ count($reviews) }} Reviews)</small>
                         </div>
                         <h3 class="font-weight-semi-bold mb-4">${{ $product['price'] }}</h3>
                         <p class="mb-4">{{ $product['description'] }}</p>
@@ -202,8 +202,8 @@
                                             <div class="media mb-4">
 
                                                 <div class="media-body">
-                                                    <h6>{{ $review->user->name }}<small> - <i>01 Jan
-                                                                2045</i></small></h6>
+                                                    <h6>{{ $review->user->name }}<small> -
+                                                            <i>{{ $review->created_at }}</i></small></h6>
                                                     <div class="text-primary mb-2">
                                                         @php
                                                             $product['rating'] = $review['rating'];

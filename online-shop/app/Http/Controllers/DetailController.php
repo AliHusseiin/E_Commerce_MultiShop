@@ -24,9 +24,18 @@ class DetailController extends Controller
         $review = new Review;
         $review['user_id'] = Auth::user()->id;
         $review['product_id'] = $id;
-        $review['rating'] = 4;
+        $review['rating'] = 2.5;
         $review->fill($request->post());
         $review->save();
+        
+        $productReview = Review::where('product_id', '=', $id)->get();
+        $productTotalRating = $productReview->sum('rating');
+        $product = Product::findOrFail($id);
+        $product['rating_count'] = $product['rating_count']+1 ;
+        $rating_count = $product['rating_count'];
+        $product['rating'] =floor(($productTotalRating +$review['rating']*$rating_count)/$rating_count);
+         // product->rating = 4*
+        $product->save();
         
         return Redirect()->back()->with('done', 'Done:Thank you for your Review');
     }
