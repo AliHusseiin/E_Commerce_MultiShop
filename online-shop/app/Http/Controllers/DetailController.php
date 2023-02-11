@@ -14,7 +14,10 @@ class DetailController extends Controller
     {
         $product = Product::findOrFail($id);
         $products = Product::all();
-        return view('details')->with(['products'=>$products,'product'=>$product]);
+        $reviews = $reviews = Review::where('product_id', $id)->with('user')->get();
+        
+        
+        return view('details')->with(['products'=>$products,'product'=>$product,'reviews'=>$reviews]);
     }
     function leaveAreview(Request $request, $id=9)
     {

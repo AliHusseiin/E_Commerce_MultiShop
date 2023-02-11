@@ -18,5 +18,5 @@ class product extends Model
     public function getPriceWithDiscount(){
         return $this->price - $this->price * $this->discount;
     }
- 
+   
 }
