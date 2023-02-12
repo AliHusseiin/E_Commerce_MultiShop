@@ -3,4 +3,45 @@
 # E_Commerce_MultiShop
 An MVC CRUD E-commerce website with simple admin dashboard using Laravel, PHP and Blade.
 
+#HGetting started
+## Feel free to Fork this repository, then clone your fork, and run this in your newly created directory:
+
+### Launch the starter project
+
+_(you can clone this repo directly tho)_
+
+
+### let's start
+
+Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run )
+
+```
+mv .env.example .env 
+```
+
+
+```
+composer install
+```
+
+Run the following command to generate your app key:
+
+```
+php artisan key:generate
+```
+```
+php artisan migrate
+```
+```
+php artisan npm run dev
+```
+
+Then start your server:
+
+```
+php artisan serve
+```
+
+# E_Commerce_MultiShop is now up and running!
+
 
