@@ -46,6 +46,6 @@ Then start your server:
 php artisan serve
 ```
 
-# E_Commerce_MultiShop is now up and running!
+### E_Commerce_MultiShop is now up and running!
 
 
