@@ -13,12 +13,15 @@ _(you can clone this repo directly tho)_
 
 ### let's start
 
-Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run )
+Rename .env.example file to .env inside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run ):
+
+```
+cd onlineshop
+```
 
 ```
 mv .env.example .env 
 ```
-
 
 ```
 composer install
