@@ -6,7 +6,7 @@ An MVC CRUD E-commerce website with simple admin dashboard using Laravel, PHP an
 ## Getting started
 ## Feel free to Fork this repository, then clone your fork, and run this in your newly created directory:
 
-### Launch the starter project
+### Launch the project
 
 _(you can clone this repo directly tho)_
 
