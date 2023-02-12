@@ -21,11 +21,15 @@ class DetailController extends Controller
     }
     function leaveAreview(Request $request, $id=9)
     {
-        Review::postReview($request, $id=9);
-        
-       
-        
-        return Redirect()->back()->with('done', 'Done:Thank you for your Review');
+        if(!Auth::user())
+        {
+            return view('auth.login');
+
+        } 
+        else {
+            Review::postReview($request, $id = 9);
+            return Redirect()->back()->with('done', 'Done:Thank you for your Review');
+        }
     }
     
 }

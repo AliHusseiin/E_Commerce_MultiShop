@@ -28,22 +28,25 @@ class Review extends Model
 
       public static function postReview($request, $id=9)
     {
-        $review = new Self;
-        $review['user_id'] = Auth::user()->id;
-        $review['product_id'] = $id;
-        $review['rating'] = 3.5;
-        $review->fill($request->post());
-        $review->save();
-         $productReview = Self::where('product_id', '=', $id)->get();
-        $productTotalRating = $productReview->sum('rating');
-        $product = Product::findOrFail($id);
-        $product['rating_count'] = $product['rating_count']+1 ;
-        $rating_count = $product['rating_count'];
-        $product['rating'] =floor(($productTotalRating +$review['rating']*$rating_count)/$rating_count);
-         // product->rating = 4*
-        $product->save();
-
+        
+            $review = new self;
+            $review['user_id'] = Auth::user()->id;
+            $review['product_id'] = $id;
+            $review['rating'] = 3.5;
+            $review->fill($request->post());
+            $review->save();
+            $productReview = self::where('product_id', '=', $id)->get();
+            $productTotalRating = $productReview->sum('rating');
+            $product = Product::findOrFail($id);
+            $product['rating_count'] = $product['rating_count'] + 1;
+            $rating_count = $product['rating_count'];
+            $product['rating'] = floor(($productTotalRating + $review['rating'] * $rating_count) / $rating_count);
+            // product->rating = 4*
+            $product->save();
+        
     }
+    
+
    
    
 
