@@ -22,6 +22,7 @@ cd onlineshop
 ```
 mv .env.example .env 
 ```
+##Important Make sure to change the Database name in .env file :)
 
 ```
 composer install
